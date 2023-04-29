@@ -1,0 +1,565 @@
+local localplr = game.Players.LocalPlayer
+local repli = game:GetService("ReplicatedStorage")
+local RunSer = game:GetService("RunService")
+local UIS = game:GetService("UserInputService")
+local GuiExist = true
+
+local v1E = game.CoreGui:FindFirstChild("WaHub")
+if v1E then
+    v1E:Destroy()
+end
+
+function GetCha()
+    return localplr.Character
+end
+function DeleGui(fv1)
+    fv1:Destroy()
+    GuiExist = false
+end
+
+local v1 = Instance.new("ScreenGui")
+local v2 = Instance.new("Frame")
+local v3 = Instance.new("UICorner")
+local v4 = Instance.new("TextLabel")
+local v5 = Instance.new("UIStroke")
+local v6 = Instance.new("TextButton")
+local v7 = Instance.new("UICorner")
+local v8 = Instance.new("Frame")
+local v9 = Instance.new("UICorner")
+local v10 = Instance.new("Frame")
+local v11 = Instance.new("UIStroke")
+local v12 = Instance.new("UIListLayout")
+local v13 = Instance.new("TextButton")
+local v14 = Instance.new("TextButton")
+local v15 = Instance.new("TextButton")
+local v16 = Instance.new("TextButton")
+local v17 = Instance.new("ScrollingFrame")
+local v18 = Instance.new("UIListLayout")
+local v19 = Instance.new("IntValue")
+local v20 = Instance.new("Frame")
+local v21 = Instance.new("Frame")
+v2.ZIndex = 100
+v4.ZIndex = 105
+v6.ZIndex = 105
+v8.ZIndex = 101
+v10.ZIndex = 101
+v17.ZIndex = 101
+
+v1.Name = "WaHub"
+v1.Parent = game.CoreGui
+v2.Parent = v1
+v2.Draggable = true
+v2.Active = true
+v2.Size = UDim2.new(0, 500, 0, 600)
+v2.Position = UDim2.new(0,30,0,30)
+v2.BackgroundColor3 = Color3.new(0,0,0)
+v11.Parent = v2
+v11.Color = Color3.new(1,0.5,1)
+v11.Thickness = 3
+v3.Parent = v2
+v3.CornerRadius = UDim.new(0,5)
+v4.Parent = v2
+v4.Size = UDim2.new(0.1, 0, 0.1, 0)
+v4.Position = UDim2.new(0.05,0,0,-5)
+v4.BackgroundTransparency = 1
+v4.Text = "와특 허브 | V 0.0.1 "
+v4.TextColor3 = Color3.new(1,0.9,1)
+v4.TextSize = 24
+v4.TextXAlignment = Enum.TextXAlignment.Left
+v5.Parent = v4
+v5.Color = Color3.new(1,0.5,1)
+v5.Thickness = 2
+v6.Parent = v2
+v6.Position = UDim2.new(0,455,0,10)
+v6.BackgroundColor3 = Color3.new(1,1,1)
+v6.Size = UDim2.new(0,30,0,30)
+v6.Text = "X"
+v7.Parent = v6
+v8.Parent = v2
+v8.Size = UDim2.new(0.95,0,0,3)
+v8.Position = UDim2.new(0,15,0,55)
+v8.BackgroundColor3 = Color3.new(1,0.5,1)
+v10.Parent = v2
+v10.BackgroundTransparency = 1
+v10.Size = UDim2.new(0,300,0,50)
+v10.Position = UDim2.new(0,10,0,75)
+v12.Parent = v10
+v12.Padding = UDim.new(0,7)
+v12.FillDirection = Enum.FillDirection.Horizontal
+v17.Parent = v2
+v17.Size = UDim2.new(0,480,0,450)
+v17.Position = UDim2.new(0,10,0,135)
+v17.Transparency = 1
+v17.BorderSizePixel = 0
+v17.ScrollBarImageTransparency = 1
+v18.Parent = v17
+v18.Padding = UDim.new(0,15)
+v18.HorizontalAlignment = Enum.HorizontalAlignment.Center
+v19.Parent = v2
+v19.Value = 1
+v20.Parent = v2
+v20.Visible = false
+v21.Size = UDim2.new(0,10,0,5)
+v21.Parent = v17
+v21.Name = "0"
+function MadeForN2(fv1,fv2)
+    local fv33 = 0
+    RunSer.RenderStepped:Connect(function()
+        if fv2.Value then
+            if fv33 < 5 then
+                fv33 = fv33 + fv33 * 0.3
+            elseif fv33 >= 5 then    
+                fv33 = 5
+            end
+            if fv33 < 1 then
+                fv33 = 1
+            end
+        else
+            fv33 = 0.9 * fv33
+        end
+        fv1.TextSize = 18 + fv33
+    end)
+end
+
+function MadeForN1(fv1,fv2)
+    fv1.Parent = v10
+    fv1.ZIndex = 101
+    fv1.Size = UDim2.new(0,115,0,40)
+    fv1.BackgroundTransparency = 1
+    fv1.AutoButtonColor = false
+    fv1.Text = fv2
+    fv1.TextSize = 15
+    local fv33 = Instance.new("UICorner")
+    fv33.Parent = fv1
+    fv33.CornerRadius = UDim.new(0,5)
+    fv33 = Instance.new("UIStroke")
+    fv33.Parent = fv1
+    fv33.Color = Color3.new(1,0.5,1)
+    fv33.Thickness = 2
+    fv33 = Instance.new("UIStroke")
+    fv33.Parent = fv1
+    fv33.Color = Color3.new(1,0.5,1)
+    fv33.Thickness = 2
+    fv33.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+    fv33 = Instance.new("BoolValue")
+    fv33.Parent = fv1
+    fv1.MouseEnter:Connect(function()
+        fv33.Value = true
+    end)
+    fv1.MouseLeave:Connect(function()
+        fv33.Value = false
+    end)
+    local fv34 = 0
+    game:GetService("RunService").RenderStepped:Connect(function()
+        if fv33.Value then
+            if fv34 < 1 then
+                fv34 = 1
+            elseif fv34 < 5 then
+                fv34 = fv34 + fv34 * 0.3
+            end
+            if fv34 >= 5 then    
+                fv34 = 5
+            end
+        else
+            fv34 = 0.9 * fv34
+        end
+        fv1.TextSize = 18 + fv34
+    end)
+end
+MadeForN1(v13,"Home")
+MadeForN1(v14,"Game")
+MadeForN1(v15,"Script")
+MadeForN1(v16,"Credit")
+local v13_1 = {}
+local v14_1 = {}
+local v15_1 = {}
+local v16_1 = {}
+local Buttons = {}
+
+function MadeForN4(fv1,fv2,fv3) -- Edit Frame or TextLabel
+    local fv33
+    fv1.Parent = v20
+    fv1.BackgroundTransparency = 1
+    fv1.Size = UDim2.new(0,450,0,30)
+    pcall(function()
+        fv1.Text = " "..fv2
+        if fv3 then
+            fv1.TextSize = fv3
+        else    
+            fv1.TextSize = 14
+        end
+        fv1.TextColor3 = Color3.new(255,255,255)
+        fv1.TextXAlignment = Enum.TextXAlignment.Left
+        fv33 = Instance.new("UIStroke")
+        fv33.Parent = fv1
+        fv33.Color = Color3.new(1,0.5,1)
+    end)
+    fv33 = Instance.new("UIStroke")
+    fv33.Parent = fv1
+    fv33.Color = Color3.new(1,0.5,1)
+    fv33.Thickness = 4
+    fv33.Color = Color3.new(0.8,0.2,0.8)
+    fv33.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+end
+
+local UselessValue
+function MadeForN5(fv1)
+    UselessValue[#UselessValue + 1] = Instance.new(fv1)
+    UselessValue[#UselessValue].Name = #UselessValue
+end
+
+function MadeForN6(fv1,fv2,fv3) -- Add TextLabel
+    local fv33 = Instance.new("TextLabel")
+    fv33.Parent = fv1
+    fv33.Text = " "..fv2
+    if fv3 then
+        fv33.Size = UDim2.new(0,0,0,fv3)
+        fv33.TextSize = fv3
+    else
+        fv33.Size = UDim2.new(0,0,0,30)
+        fv33.TextSize = 14
+    end
+    fv33.TextColor3 = Color3.new(255,255,255)
+    fv33.TextXAlignment = Enum.TextXAlignment.Left
+    fv33.ZIndex = 101
+    local fv34 = Instance.new("UIStroke")
+    fv34.Parent = fv33
+    fv34.Color = Color3.new(1,0.5,1)
+end
+
+function MadeForN7(fv1) -- Add UIListLayout
+    local fv33 = Instance.new("UIListLayout")
+    fv33.Parent = fv1
+    fv33.Padding = UDim.new(0,10)
+end
+function MadeForN8(fv1,fv2,fv3) -- On/Off Button
+    local fv33 = Instance.new("TextButton")
+    fv33.Parent = fv1
+    fv33.Size = UDim2.new(0,40,0,20)
+    fv33.Position = UDim2.new(0,405,0,5)
+    fv33.ZIndex = 101
+    fv33.Text = ""
+    if fv2 then
+        fv33.BackgroundColor3 = Color3.new(0.3,1,0.3)
+    else
+        fv33.BackgroundColor3 = Color3.new(1,0.3,0.3)
+    end
+    Buttons[fv3] = fv33
+    local fv34 = Instance.new("UIStroke")
+    fv34.Parent = fv33
+    fv34.Thickness = 3
+    fv34.Color = Color3.new(1,0.5,1)
+    fv34.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+    fv34 = Instance.new("BoolValue")
+    fv34.Parent = fv1
+    local fv35 = coroutine.wrap(function(fv1,fv2)
+        fv1.MouseButton1Down:Connect(function()
+            fv2.Value = not fv2.Value
+        end)
+        repeat
+            wait()
+            if fv2.Value then
+                fv1.BackgroundColor3 = Color3.new(0.3,1,0.3)
+            else
+                fv1.BackgroundColor3 = Color3.new(1,0.3,0.3)
+            end
+        until false
+    end)
+    fv35(fv33,fv34)
+end
+
+function MadeForN9(fv1,fv2,fv3) -- TextBox
+    local fv33 = Instance.new("TextBox")
+    fv33.Parent = fv1
+    fv33.Size = UDim2.new(0,40,0,20)
+    fv33.Position = UDim2.new(0,405,0,5)
+    fv33.ZIndex = 101
+    fv33.TextScaled = true
+    fv33.TextColor3 = Color3.new(1,1,1)
+    fv33.BackgroundColor3 = Color3.new(0,0,0)
+    fv33.Text = fv2
+    Buttons[fv3] = fv33
+    local fv34 = Instance.new("UIStroke")
+    fv34.Parent = fv33
+    fv34.Thickness = 1
+    fv34.Color = Color3.new(1,0.5,1)
+    fv34 = Instance.new("UIStroke")
+    fv34.Parent = fv33
+    fv34.Thickness = 3
+    fv34.Color = Color3.new(1,0.5,1)
+    fv34.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+end
+function MadeForN10(fv1,fv2) -- Button
+    local fv33 = Instance.new("TextButton")
+    fv33.Parent = fv1
+    fv33.Size = UDim2.new(0,40,0,20)
+    fv33.Position = UDim2.new(0,405,0,5)
+    fv33.ZIndex = 101
+    fv33.TextColor3 = Color3.new(1,1,1)
+    fv33.Text = ""
+    Buttons[fv2] = fv33
+    local fv34 = Instance.new("UIStroke")
+    fv34.Parent = fv33
+    fv34.Thickness = 3
+    fv34.Color = Color3.new(1,0.5,1)
+    fv34.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+end
+
+UselessValue = v13_1
+MadeForN5("TextLabel")
+MadeForN5("Frame")
+MadeForN4(v13_1[1],"와특 허브에 온걸 아마도 환영합니다.")
+MadeForN4(v13_1[2])
+v13_1[2].Size = UDim2.new(0,450,0,300)
+MadeForN7(v13_1[2])
+MadeForN6(v13_1[2],"",3)
+MadeForN6(v13_1[2],"230431 오픈",24)
+MadeForN6(v13_1[2],"",3)
+MadeForN6(v13_1[2],"게임 스크립트")
+MadeForN6(v13_1[2],"- LUCKY BLOCKS Battlegrounds",14)
+MadeForN6(v13_1[2],"- Monkey Tycoon",14)
+
+UselessValue = v15_1
+MadeForN5("TextLabel")
+MadeForN5("TextLabel")
+MadeForN5("TextLabel")
+MadeForN5("TextLabel")
+MadeForN4(v15_1[1],"WalkSpeed")
+MadeForN9(v15_1[1],"16",1)
+MadeForN4(v15_1[2],"JumpPower")
+MadeForN9(v15_1[2],"50",2)
+MadeForN4(v15_1[3],"Noclip")
+MadeForN8(v15_1[3],false,3)
+MadeForN4(v15_1[4],"Click TP")
+MadeForN8(v15_1[4],false,4)
+
+UselessValue = v16_1
+MadeForN5("TextLabel")
+MadeForN4(v16_1[1],"만든놈: 와특#1868")
+
+v6.MouseButton1Down:Connect(function()
+    DeleGui(v1)
+end)
+v13.MouseButton1Down:Connect(function()
+    v19.Value = 1
+end)
+v14.MouseButton1Down:Connect(function()
+    v19.Value = 2
+end)
+v15.MouseButton1Down:Connect(function()
+    v19.Value = 3
+end)
+v16.MouseButton1Down:Connect(function()
+    v19.Value = 4
+end)
+Buttons[1].Changed:Connect(function(fv1)
+    if fv1 == "Text" then
+        GetCha().Humanoid.WalkSpeed = Buttons[1].Text
+    end
+end)
+Buttons[2].Changed:Connect(function(fv1)
+    if fv1 == "Text" then
+        GetCha().Humanoid.JumpPower = Buttons[2].Text
+    end
+end)
+function UselessF1(fv1)
+    local fv2 = GetCha()
+    fv2.Head.CanCollide = fv1
+    if fv2:FindFirstChild("Torso") then
+        fv2.Torso.CanCollide = fv1
+    else
+        fv2.LowerTorso.CanCollide = fv1
+        fv2.UpperTorso.CanCollide = fv1
+        fv2.HumanoidRootPart.CanCollide = fv1
+    end
+end
+Buttons[3].Parent.Value.Changed:Connect(function(fv1)
+    local fv33 = RunSer.Stepped:Connect(function()
+        if Buttons[3].Parent.Value.Value then
+            UselessF1(false)
+        else
+            UselessF1(true)
+            fv33:Disconnect()
+        end
+    end)
+    if not GuiExist then
+        UselessF1(true)
+        fv33:Disconnect()
+    end
+end)
+Buttons[4].Parent.Value.Changed:Connect(function(fv1)
+    local fv30 = false
+    local fv33 = UIS.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.Keyboard then
+            if input.KeyCode == Enum.KeyCode.LeftControl then
+                fv30 = true
+            end
+        end
+    end)
+    local fv34 = UIS.InputEnded:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.Keyboard then
+            if input.KeyCode == Enum.KeyCode.LeftControl then
+                fv30 = false
+            end
+        end
+    end)
+    local fv35 = localplr:GetMouse().Button1Down:Connect(function()
+        if fv30 then
+            GetCha():PivotTo(localplr:GetMouse().Hit)
+        end
+    end)
+    repeat wait()
+    until not GuiExist or not Buttons[4].Parent.Value.Value
+    fv33:Disconnect()
+    fv34:Disconnect()
+    fv35:Disconnect()
+end)
+
+function HideAll()
+    local fv1
+    local fv2
+    for i,v in ipairs(v17:GetChildren()) do
+        pcall(function()
+            v.Visible = true
+            v.Parent = v20
+        end)
+    end
+    v21.Parent = v17
+end
+function MadeForN3(fv1)
+    for i,v in ipairs(fv1) do
+        pcall(function()
+            v.Visible = true
+            v.Parent = v17
+        end)
+    end
+end
+UselessValue2 = {
+    UDim2.new(0,0,0,0),
+    UDim2.new(0,0,0,0),
+    UDim2.new(0,0,2,0),
+    UDim2.new(0,0,0,0)
+}
+v17.CanvasSize = UselessValue2[1]
+v19.Changed:Connect(function(fv1)
+    HideAll()
+    if fv1 == 1 then
+        v17.CanvasSize = UselessValue2[1]
+        MadeForN3(v13_1)
+    elseif fv1 == 2 then
+        v17.CanvasSize = UselessValue2[2]
+        MadeForN3(v14_1)
+    elseif fv1 == 3 then
+        v17.CanvasSize = UselessValue2[3]
+        MadeForN3(v15_1)
+    elseif fv1 == 4 then
+        v17.CanvasSize = UselessValue2[4]
+        MadeForN3(v16_1)
+    end
+end)
+
+UIS.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.Keyboard then
+        if input.KeyCode == Enum.KeyCode.LeftAlt then
+        v1.Enabled = not v1.Enabled
+        end
+    end
+end)
+
+-- Game Script
+UselessValue = v14_1
+local pid = game.PlaceId
+if pid == 662417684 then
+    MadeForN5("TextLabel")
+    MadeForN5("TextLabel")
+    MadeForN5("TextLabel")
+    MadeForN5("TextLabel")
+    MadeForN5("TextLabel")
+    MadeForN4(v14_1[1],"Open LuckyBlock")
+    MadeForN4(v14_1[2],"Open SuperBlock")
+    MadeForN4(v14_1[3],"Open DiamondBlock")
+    MadeForN4(v14_1[4],"Open RainbowBlock")
+    MadeForN4(v14_1[5],"Open GalaxyBlock")
+    MadeForN10(v14_1[1],100)
+    MadeForN10(v14_1[2],101)
+    MadeForN10(v14_1[3],102)
+    MadeForN10(v14_1[4],103)
+    MadeForN10(v14_1[5],104)
+    v14_1[1].TextButton.MouseButton1Down:Connect(function()
+        repli.SpawnLuckyBlock:FireServer()
+    end)
+    v14_1[2].TextButton.MouseButton1Down:Connect(function()
+        repli.SpawnSuperBlock:FireServer()
+    end)
+    v14_1[3].TextButton.MouseButton1Down:Connect(function()
+        repli.SpawnDiamondBlock:FireServer()
+    end)
+    v14_1[4].TextButton.MouseButton1Down:Connect(function()
+        repli.SpawnRainbowBlock:FireServer()
+    end)
+    v14_1[5].TextButton.MouseButton1Down:Connect(function()
+        repli.SpawnGalaxyBlock:FireServer()
+    end)
+    
+elseif pid == 11400511154 then
+    MadeForN5("TextLabel")
+    MadeForN5("TextLabel")
+    MadeForN5("TextLabel")
+    MadeForN5("TextLabel")
+    MadeForN4(v14_1[1],"Auto Collect")
+    MadeForN4(v14_1[2],"Auto Deposit")
+    MadeForN4(v14_1[3],"Auto Buy Monkeys")
+    MadeForN4(v14_1[4],"Auto But Deposit Rate(Speed)")
+    MadeForN8(v14_1[1],false,100)
+    MadeForN8(v14_1[2],false,101)
+    MadeForN8(v14_1[3],false,102)
+    MadeForN8(v14_1[4],false,103)
+    Buttons[100].Parent.Value.Changed:Connect(function()
+        local fv30 = Buttons[100].Parent.Value
+        if fv30.Value then
+            repeat wait()
+                for i,v in ipairs(workspace.Drops:GetChildren()) do
+                    v.Position = GetCha():GetPivot().Position
+                end
+            until not fv30.Value or not GuiExist
+        end
+    end)
+    Buttons[101].Parent.Value.Changed:Connect(function()
+        local fv30 = Buttons[101].Parent.Value
+        if fv30.Value then
+            repeat wait()
+                repli.GTycoonClient.Remotes.DepositDrops:FireServer()
+            until not fv30.Value or not GuiExist
+        end
+    end)
+    Buttons[102].Parent.Value.Changed:Connect(function()
+        local fv30 = Buttons[102].Parent.Value
+        if fv30.Value then
+            repeat wait()
+                repli.GTycoonClient.Remotes.BuyDropperMax:FireServer();
+            until not fv30.Value or not GuiExist
+        end
+    end)
+    Buttons[103].Parent.Value.Changed:Connect(function()
+        local fv30 = Buttons[103].Parent.Value
+        if fv30.Value then
+            repeat wait()
+                repli.GTycoonClient.Remotes.BuySpeed:FireServer(1)
+            until not fv30.Value or not GuiExist
+        end
+    end)
+elseif 1==2 then
+
+else
+    MadeForN5("TextLabel")
+    MadeForN4(v14_1[1],"지원하는 게임이 아닙니다.")
+end
+
+for i,v in ipairs(v20:GetChildren()) do
+    pcall(function()
+        v.Visible = true
+        v.Parent = v20
+        v.ZIndex = 101
+    end)
+end
+MadeForN3(v13_1)
