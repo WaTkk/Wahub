@@ -1,4 +1,5 @@
 local localplr = game.Players.LocalPlayer
+local Players = game:GetService("Players")
 local repli = game:GetService("ReplicatedStorage")
 local RunSer = game:GetService("RunService")
 local UIS = game:GetService("UserInputService")
@@ -102,6 +103,79 @@ v20.Visible = false
 v21.Size = UDim2.new(0,10,0,5)
 v21.Parent = v17
 v21.Name = "0"
+
+--ESP
+local ESPEvents = {}
+	local ESP = {}
+	local ESPGui = Instance.new("BillboardGui")
+	local ESPBox = Instance.new("Frame")
+	local ESPBoxStroke = Instance.new("UIStroke")
+	local ESPName = Instance.new("TextLabel")
+	local ESPNameStroke = Instance.new("UIStroke")
+	local ESPStud = Instance.new("TextLabel")
+	local ESPStudStroke = Instance.new("UIStroke")
+	ESPGui.Size = UDim2.new(0,10,0,30)
+	ESPGui.AlwaysOnTop = true
+	ESPGui.Enabled = false
+	ESPBox.Size = UDim2.new(1,0,1,0)
+	ESPBox.BackgroundTransparency = 1
+	ESPBox.Parent = ESPGui
+	ESPBoxStroke.Thickness = 5
+	ESPBoxStroke.Parent = ESPBox
+	ESPBoxStroke.Color = Color3.new(1,1,1)
+	ESPName.Name = "PlayerName"
+	ESPName.BackgroundTransparency = 1
+	ESPName.Size = UDim2.new(0,1,0,1)
+	ESPName.Position = UDim2.new(0.5, 0,0, 0)
+	ESPName.TextSize = 12
+	ESPName.TextColor3 = Color3.new(1,1,1)
+	ESPName.Parent = ESPGui
+	ESPNameStroke.Color = Color3.new(1,1,1)
+	ESPNameStroke.Color = Color3.new(0.3,0.3,0.3)
+	ESPNameStroke.Thickness = 2
+	ESPNameStroke.Parent = ESPName
+	ESPStud.Name = "Stud"
+	ESPStud.BackgroundTransparency = 1
+	ESPStud.Size = UDim2.new(0,1,0,1)
+	ESPStud.Position = UDim2.new(0.5,0,0,20)
+	ESPStud.TextSize = 12
+	ESPStud.TextColor3 = Color3.new(1,1,1)
+	ESPStud.Parent = ESPGui
+	ESPStudStroke.Color = Color3.new(1,1,1)
+	ESPStudStroke.Color = Color3.new(0.3,0.3,0.3)
+	ESPStudStroke.Thickness = 2
+	ESPStudStroke.Parent = ESPStud
+
+	function ESPClone(p1)
+		pcall(function()
+			ESP[p1] = ESPGui:Clone()
+			ESP[p1]:WaitForChild("PlayerName",3).Text = p1.Name
+			ESPEvents[p1] = RunSer.RenderStepped:Connect(function()
+				pcall(function()
+					ESP[p1].Parent = p1.Character
+					local Pos1 = p1.Character:GetPivot().Position
+					local Pos2 = localplr.Character:GetPivot().Position
+					ESP[p1]:FindFirstChild("Stud").Text = math.floor(math.sqrt(math.pow(Pos1.X - Pos2.X,2) + math.pow(Pos1.Y - Pos2.Y,2) + math.pow(Pos1.Z - Pos2.Z,2))).." Stud"
+				end)
+			end)
+		end)
+	end
+
+	for a,b in ipairs(Players:GetPlayers()) do
+		if b ~= localplr then
+			ESPClone(b)
+		end
+	end
+	local PlrAdded = Players.PlayerAdded:Connect(function(plr)
+		ESPClone(plr)
+	end)
+	local PlrRemove = Players.PlayerRemoving:Connect(function(plr)
+		ESP[plr]:Destroy()
+		ESPEvents[plr]:Disconnect()
+		ESP[plr] = nil
+		ESPEvents[plr] = nil
+	end)
+
 function MadeForN2(fv1,fv2)
     local fv33 = 0
     RunSer.RenderStepped:Connect(function()
@@ -324,6 +398,7 @@ MadeForN5("TextLabel")
 MadeForN5("TextLabel")
 MadeForN5("TextLabel")
 MadeForN5("TextLabel")
+MadeForN5("TextLabel")
 MadeForN4(v15_1[1],"WalkSpeed")
 MadeForN9(v15_1[1],"16",1)
 MadeForN4(v15_1[2],"JumpPower")
@@ -332,6 +407,9 @@ MadeForN4(v15_1[3],"Noclip")
 MadeForN8(v15_1[3],false,3)
 MadeForN4(v15_1[4],"Click TP")
 MadeForN8(v15_1[4],false,4)
+
+MadeForN4(v15_1[5],"ESP")
+MadeForN8(v15_1[5],false,100)
 
 UselessValue = v16_1
 MadeForN5("TextLabel")
@@ -460,7 +538,8 @@ end)
 
 UIS.InputBegan:Connect(function(input)
     if input.UserInputType == Enum.UserInputType.Keyboard then
-        if input.KeyCode == Enum.KeyCode.LeftAlt then
+    	--LeftAlt
+        if input.KeyCode == Enum.KeyCode.V then
         v1.Enabled = not v1.Enabled
         end
     end
@@ -500,7 +579,7 @@ if pid == 662417684 then
     v14_1[5].TextButton.MouseButton1Down:Connect(function()
         repli.SpawnGalaxyBlock:FireServer()
     end)
-    
+
 elseif pid == 11400511154 then
     MadeForN5("TextLabel")
     MadeForN5("TextLabel")
@@ -548,6 +627,8 @@ elseif pid == 11400511154 then
             until not fv30.Value or not GuiExist
         end
     end)
+elseif pid == 863266079 then
+	
 elseif 1==2 then
 
 else
@@ -562,4 +643,27 @@ for i,v in ipairs(v20:GetChildren()) do
         v.ZIndex = 101
     end)
 end
+
 MadeForN3(v13_1)
+
+local Coroutine743 = coroutine.wrap(function()
+    repeat wait()
+    	for a,b in pairs(ESP) do
+    		b.Enabled = Buttons[100].Parent.Value.Value
+    	end
+	until not GuiExist
+end)
+local ESPDeleteGui = coroutine.wrap(function()
+	repeat wait()
+	until not GuiExist
+	PlrAdded:Disconnect()
+	PlrRemove:Disconnect()
+	for a,b in pairs(ESPEvents) do
+		b:Disconnect()
+	end
+	for a,b in pairs(ESP) do
+		b:Destroy()
+	end
+end)
+Coroutine743()
+ESPDeleteGui()
